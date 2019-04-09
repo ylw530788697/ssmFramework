@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.evan.ssm.dao.ItemsMapper" >
+  <resultMap id="BaseResultMap" type="cn.evan.ssm.model.Items" >
+    <id column="items_id" property="itemsId" jdbcType="INTEGER" />
+    <result column="items_name" property="itemsName" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    items_id, items_name, price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from items
+    where items_id = #{itemsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from items
+    where items_id = #{itemsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.evan.ssm.model.Items" >
+    insert into items (items_id, items_name, price
+      )
+    values (#{itemsId,jdbcType=INTEGER}, #{itemsName,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.evan.ssm.model.Items" >
+    insert into items
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemsId != null" >
+        items_id,
+      </if>
+      <if test="itemsName != null" >
+        items_name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemsId != null" >
+        #{itemsId,jdbcType=INTEGER},
+      </if>
+      <if test="itemsName != null" >
+        #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.evan.ssm.model.Items" >
+    update items
+    <set >
+      <if test="itemsName != null" >
+        items_name = #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where items_id = #{itemsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.evan.ssm.model.Items" >
+    update items
+    set items_name = #{itemsName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR}
+    where items_id = #{itemsId,jdbcType=INTEGER}
+  </update>
+</mapper>
