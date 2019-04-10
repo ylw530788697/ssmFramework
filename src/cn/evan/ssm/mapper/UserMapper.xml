@@ -79,4 +79,18 @@
       password = #{password,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="findUserByUserNameAndPassword" parameterType="cn.evan.ssm.model.User" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+   <where>
+     <if test="username != null" >
+       and username=#{username,jdbcType=VARCHAR}
+     </if>
+     <if test="password != null" >
+       and password=#{password,jdbcType=VARCHAR}
+     </if>
+   </where>
+  </select>
 </mapper>
