@@ -1,12 +1,6 @@
 package cn.evan.ssm.cityandcode;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tenpay.crisk.common.ErrorCodeInfo;
-import com.tenpay.crisk.rule.dao.CommonDimensionAttributesDao;
-import com.tenpay.crisk.rule.model.CityCodeContainer;
-import com.tenpay.crisk.rule.model.CommonDimensionAttributesModel;
-import com.tenpay.crisk.util.ChineseInitialsUtils;
-import com.tenpay.fsmart.common.exception.BaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +61,6 @@ public class CityAndCodeServiceImpl implements CityAndCodeService {
     List<String> cityFirstList = null;
     List<String> cityThreeList = null;
 
-    @Autowired
-    private CommonDimensionAttributesDao commonDimensionAttributesDao;
-
     private static Logger logger = LoggerFactory.getLogger(CityAndCodeServiceImpl.class);
 
 
@@ -95,14 +86,14 @@ public class CityAndCodeServiceImpl implements CityAndCodeService {
     @Override
     public String transformationCityArray(Integer fdimensionId) {
         logger.info("CityAndCodeServiceImpl transformationCityArray fdimensionId is {}", fdimensionId);
-        List<CommonDimensionAttributesModel> commonDimensionAttributesModelList = commonDimensionAttributesDao.queryByDimensionAllAttributes(fdimensionId);
-        logger.info("CityAndCodeServiceImpl transformationCityArray commonDimensionAttributesModelList is {}", JSONObject.toJSONString(commonDimensionAttributesModelList));
+        //List<CommonDimensionAttributesModel> commonDimensionAttributesModelList = commonDimensionAttributesDao.queryByDimensionAllAttributes(fdimensionId);
+        //logger.info("CityAndCodeServiceImpl transformationCityArray commonDimensionAttributesModelList is {}", JSONObject.toJSONString(commonDimensionAttributesModelList));
         //判断传的list是否为空
-        if (commonDimensionAttributesModelList == null) {
+       /* if (commonDimensionAttributesModelList == null) {
             throw new BaseException(ErrorCodeInfo.EXECUTE_FAILED_INVALID_PARAMETER_CODE,
                     ErrorCodeInfo.EXECUTE_FAILED_INVALID_PARAMETER_MSG);
         }
-        getResourceCityAndCode(commonDimensionAttributesModelList);
+        getResourceCityAndCode(commonDimensionAttributesModelList);*/
         logger.info("CityAndCodeServiceImpl getResourceCityAndCode cityKeyMap is {},codeKeyMap is{}", JSONObject.toJSONString(cityKeyMap),JSONObject.toJSONString(codeKeyMap));
         //遍历map集合
         for (String key : cityKeyMap.keySet()) {
@@ -577,7 +568,7 @@ public class CityAndCodeServiceImpl implements CityAndCodeService {
     }
 
     //测试代码
-   /* static {
+   static {
         cityKeyMap.put("珠海市", "4404");
         codeKeyMap.put("4404", "珠海市");
         cityKeyMap.put("汕头市", "4405");
@@ -1261,5 +1252,5 @@ public class CityAndCodeServiceImpl implements CityAndCodeService {
         cityKeyMap.put("宣城市", "3418");
         codeKeyMap.put("3418", "宣城市");
     }
-*/
+
 }

@@ -1,4 +1,4 @@
-package cn.evan.ssm.util;
+package cn.evan.ssm.cityandcode;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * 取得给定汉字串的首字母串,即声母串
  *
- * @author evanYang
+ * @author v_songtaohu
  */
 public final class ChineseInitialsUtils {
 
