@@ -22,7 +22,7 @@ public class ThreadPoolDemo {
         //pool.submit();
         //pool.submit()
         for (int i = 0; i < 20; i++) {
-            int temp=i;
+            final int temp=i;
             pool.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -42,7 +42,7 @@ public class ThreadPoolDemo {
         }*/
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         for (int i = 0; i < 20; i++) {
-            int temp=i;
+            final int temp=i;
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {

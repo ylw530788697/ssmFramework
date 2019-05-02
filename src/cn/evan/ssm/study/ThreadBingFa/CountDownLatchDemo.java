@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatchDemo {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("等待子线程执行完毕");
-        CountDownLatch countDownLatch = new CountDownLatch(2);
+        final CountDownLatch countDownLatch = new CountDownLatch(2);
 
         new Thread(new Runnable() {
             @Override

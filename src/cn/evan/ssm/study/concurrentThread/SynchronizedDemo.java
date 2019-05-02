@@ -33,7 +33,7 @@ public class SynchronizedDemo {
     }
 
     public static void main(String[] args) {
-        SynchronizedDemo synchronizedDemo = new SynchronizedDemo();
+        final SynchronizedDemo synchronizedDemo = new SynchronizedDemo();
         //while (true) {
             new Thread(new Runnable() {
                 @Override

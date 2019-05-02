@@ -1,6 +1,5 @@
 package cn.evan.ssm.study;
 
-import org.testng.annotations.Test;
 
 public class CreatThreadDemo1 extends  Thread {
     @Override
@@ -36,7 +35,7 @@ public class CreatThreadDemo1 extends  Thread {
         System.out.println("主线程执行完毕");
     }
 
-    @Test
+
     public static void demo1(){
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -53,7 +52,7 @@ public class CreatThreadDemo1 extends  Thread {
     }
 
     public static void demo2(){
-        Thread t1=new Thread(new Runnable() {
+        final Thread t1=new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i=0;i<20;i++){

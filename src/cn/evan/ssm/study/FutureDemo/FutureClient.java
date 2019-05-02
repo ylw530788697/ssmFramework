@@ -1,8 +1,8 @@
 package cn.evan.ssm.study.FutureDemo;
 
 public class FutureClient {
-    public Data submit(String queryStr) {
-        FutureData futureData = new FutureData();
+    public Data submit(final String queryStr) {
+        final FutureData futureData = new FutureData();
         new Thread(new Runnable() {
             @Override
             public void run() {
