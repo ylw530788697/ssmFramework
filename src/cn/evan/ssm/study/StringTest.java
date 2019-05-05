@@ -7,5 +7,14 @@ public class StringTest
         Integer total=99;
         //自动拆箱
         int totalPrim=total;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("hello word!");
+            }
+        }).start();
+
+        //lambda表达式
+        new Thread(()-> System.out.println("hello word lambda")).start();
     }
 }
