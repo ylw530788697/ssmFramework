@@ -1,8 +1,12 @@
 package cn.evan.ssm.study;
 
+import cn.evan.ssm.cityandcode.CommonDimensionAttributesModel;
+import cn.evan.ssm.dao.UserMapper;
+import com.alibaba.fastjson.JSONObject;
 import org.testng.annotations.Test;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -63,8 +67,24 @@ public class LambdaDemo {
     }
 
     public static void main(String[] args) {
-        List<String> list = Arrays.asList("Java","Python","scala","Shell","R");
+        /*List<String> list = Arrays.asList("Java","Python","scala","Shell","R");
         System.out.println("list start with j:");
         filterTest(list,x->x.startsWith("J"));
+        ArrayList<Integer> integers = new ArrayList<>(3);
+        System.out.println(integers);
+        System.out.println(Integer.MAX_VALUE - 8);*/
+
+        //List<String> list = Arrays.asList("Java","Python","scala","Shell","R");
+        List<UserModel> listUser=new ArrayList<UserModel>();
+        String a="aa";
+        a.replace(" ","");
+
+        listUser.add(new UserModel("111","2222"));
+        listUser.add(new UserModel("22222","333333"));
+        listUser.add(new UserModel("44444","44444"));
+        String s = JSONObject.toJSONString(listUser);
+        System.out.println(s);
+
+
     }
 }
