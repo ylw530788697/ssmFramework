@@ -1,5 +1,7 @@
 package cn.evan.ssm.study.ThreadBingFa;
 
+import cn.evan.ssm.study.productAndComsum.BlockingDemo;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,6 +13,9 @@ public class ProducerThread extends Thread {
 
     public ProducerThread(BlockingQueue queue) {
         this.queue = queue;
+    }
+
+    public ProducerThread(BlockingDemo blockingDemo) {
     }
 
     @Override
